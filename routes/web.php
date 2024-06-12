@@ -19,7 +19,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])
+->name('admin.')
+->prefix('admin')
+->group(function(){
+    Route::get('/', [DashboardController::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');//http://localhost:8000/admin
+
+//preparo le rotte di tipo resource per andare a gestire i dati che ho creato
+Route::resource('/photos', PhotosController::class);
+
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
