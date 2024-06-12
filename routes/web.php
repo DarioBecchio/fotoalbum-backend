@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\PhotoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +26,7 @@ Route::middleware(['auth', 'verified'])
     Route::get('/', [DashboardController::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');//http://localhost:8000/admin
 
 //preparo le rotte di tipo resource per andare a gestire i dati che ho creato
-//Route::resource('/photos', PhotosController::class);
+    Route::resource('photos', PhotoController::class);
 
 });
 
