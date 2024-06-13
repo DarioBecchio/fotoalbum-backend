@@ -17,7 +17,7 @@ class PhotoSeeder extends Seeder
             $photo = new Photo();
             $photo->title = $faker->words(5, true);
             $photo->description = $faker->text();
-            $photo->image_path = $faker->imageUrl(640, 480, 'Photos', true, $photo->title, true, 'jpeg');
+            $photo->image_path = $faker->imageUrl(640, 480, 'Photos','jpg');
             $photo->save();
         }
     }

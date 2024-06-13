@@ -27,8 +27,8 @@ class PhotoController extends Controller
      */
     public function create()
     {
-        $photos = Photo::all();
-        return view ('admin.photos.create',compact('photos'));
+        
+        return view ('admin.photos.create');
     }
 
     /**
@@ -36,16 +36,16 @@ class PhotoController extends Controller
      */
     public function store(StorePhotoRequest $request)
     {
-        //dd($request->all());
+        dd($request->all());
         
-        $val_data = $request->validated();
+        //$val_data = $request->validated();
         $image_path = Storage::put('uploads', $request->image_path);
-        dd($image_path);
+        //dd($image_path);
     
         
-        Photo::create($val_data);
+        //Photo::create($val_data);
         
-        return to_route('admin.photos.index')->with('success', 'Foto creata con successo');
+        //return to_route('admin.photos.index')->with('success', 'Foto creata con successo');
     }
 
     /**

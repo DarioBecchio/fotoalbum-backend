@@ -11,8 +11,6 @@
                 <div class="card-body">
                     <img src="{{ asset('storage/' . $photo->image_path) }}" class="img-fluid mb-3" alt="{{ $photo->title }}">
                     <p>{{ $photo->description }}</p>
-                    <p><strong>Category:</strong> {{ $photo->category }}</p>
-                    <p><strong>Featured:</strong> {{ $photo->featured ? 'Yes' : 'No' }}</p>
                 </div>
             </div>
         </div>
