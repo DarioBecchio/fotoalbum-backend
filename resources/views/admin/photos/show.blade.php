@@ -14,7 +14,7 @@
                 </div>
                 <div>
                     <strong>Category: </strong>
-                    <p class="my-4">{{$photo->category}}</p>
+                    <p class="my-4">{{$photo->category?->name}}</p>
                 </div>
             </div>
         </div>
