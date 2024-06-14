@@ -6,18 +6,26 @@
         <form method="post" action="{{route('admin.photos.update', $photo)}}"  enctype="multipart/form-data">
         @csrf
         @method('PUT')
-            <div class="form-group">
+
+            <div class="mb-3">
                 <label for="title">Titolo</label>
                 <input type="text" class="form-label" id="title" name="title" placeholder="Inserisci il titolo" value="{{old('title',$photo->title)}}" required>
             </div>
-            <div class="form-group">
+
+            <div class="mb-3">
                 <label for="description">Descrizione</label>
                 <textarea class="form-control" id="description" name="description" rows="3" placeholder="Inserisci la descrizione" value="{{old('description',$photo->description)}}"></textarea>
             </div>
-            <div class="form-group mb-3">
-            <label for="image_path" class="form-label">Upload cover image</label>
-            <input type="file" class="form-control" name="image_path" id="image_path" placeholder="image_path" aria-describedby="imagePathHelper" value="{{old('image_path')}}"/>
-            <div id="image_path" class="form-text">Upload a cover image for this post</div>
+
+            <div class="d-flex gap-3">
+                <img width="140" src="{{ asset('storage/' . $photo->image_path) }}" alt="">
+                <div class="mb-3">
+                    <label for="image_path" class="form-label">Upload cover image</label>
+                    <input type="file" class="form-control" name="image_path" id="image_path" placeholder="image_path" aria-describedby="imagePathHelper" value="{{old('image_path')}}"/>
+                    <div id="image_path" class="form-text">Upload a cover image for this post</div>
+                </div>
+            </div>
+            
             
             <div class="mb-3">
                 <label for="category_id" class="form-label">Photo Category</label>
@@ -42,6 +50,7 @@
                     @endforeach
                 </select>
             </div>
+
             <button type="submit" class="btn btn-primary">Modifica</button>
         </form>
 </div>

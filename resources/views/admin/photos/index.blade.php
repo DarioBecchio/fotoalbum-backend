@@ -39,7 +39,13 @@
               <td>{{$photo->id}}</td>
               <td>{{$photo->title}}</td>
               <td>{{$photo->description}}</td>
-              <td><img width="140" src="{{ asset('storage/' . $photo->image_path) }}" alt=""></td>
+              <td>
+              @if (Str::startsWith($photo->cover_image, 'https://'))
+                <img width="140" src="{{ $photo->image_path }}" alt="">
+              @else
+                <img width="140" src="{{ asset('storage/' . $photo->image_path) }}" alt="">
+              @endif
+                </td>
               <td>{{$photo->category?->name}}</td>
               <td>{{$photo->featured}}</td>
               <td>
