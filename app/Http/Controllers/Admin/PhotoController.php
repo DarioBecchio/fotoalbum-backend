@@ -89,7 +89,7 @@ class PhotoController extends Controller
             //dd($img_path);
             $val_data['image_path'] = $img_path;
         }
-        
+
         $photo->update($val_data);
 
         return to_route('admin.photos.index')->with('success', 'Foto aggiornata con successo');
@@ -100,6 +100,10 @@ class PhotoController extends Controller
      */
     public function destroy(Photo $photo)
     {
+        if($photo->image_path){
+            Storage::delete($photo->image_path);
+        }
+        
         $photo->delete();
 
         return to_route('admin.photos.index')->with('success', 'Foto cancellata correttamente');

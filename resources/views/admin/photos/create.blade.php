@@ -1,9 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
+
 <div class="container mt-5">
 
     @include('partials.errors')
+    @include('partials.successs')
     
         <h2 class="mb-4">Creazione Nuovo Record Photo</h2>
         <form method="post" action="{{route('admin.photos.store')}}" enctype="multipart/form-data">

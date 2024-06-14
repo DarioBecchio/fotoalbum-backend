@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-
+   
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Dashboard Fotografo</a>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -15,6 +15,9 @@
       </ul>
     </div>
   </nav>
+
+    @include('partials.errors')
+    @include('partials.success')
 
   <div class="container mt-4">
     <div class="row">
@@ -47,31 +50,40 @@
               @endif
                 </td>
               <td>{{$photo->category?->name}}</td>
-              <td>{{$photo->featured}}</td>
               <td>
-                <a href="{{route('admin.photos.show', $photo)}}" class="btn btn-primary btn-sm">Visualizza</a>
-                <a href="{{route('admin.photos.edit', $photo)}}" class="btn btn-warning btn-sm">Modifica</a>
+              
+              </td>
+              <td>
+      
+                <a href="{{route('admin.photos.show', $photo)}}" class="btn btn-primary btn-sm">
+                <i class="fas fa-eye fa-xs fa-fw">
+                  Show
+                </a>
+                <a href="{{route('admin.photos.edit', $photo)}}" class="btn btn-secondary btn-sm">
+                <i class="fas fa-pencil fa-xs fa-fw"></i>
+                  Edit
+                </a>
                 <!-- Modal trigger button -->
                 <button
                   type="button"
-                  class="btn btn-primary btn-lg"
+                  class="btn btn-danger btn-small"
                   data-bs-toggle="modal"
-                  data-bs-target="#modalId"
+                  data-bs-target="#modalId-{{$photo->id}}"
                 >
-                  Cancella
+                  <i class="fas fa-trash fa-xs fa-fw"></i>
+                  Delete
                 </button>
                 
                 <!-- Modal Body -->
                 <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
                 <div
                   class="modal fade"
-                  id="modalId={{$photo->id}}"
+                  id="modalId-{{$photo->id}}"
                   tabindex="-1"
                   data-bs-backdrop="static"
-                  data-bs-keyboard="false"
-                  
+                  data-bs-keyboard="false"                  
                   role="dialog"
-                  aria-labelledby="modalTitle{{$photo->id}}"
+                  aria-labelledby="modalTitle-{{$photo->id}}"
                   aria-hidden="true"
                 >
                   <div
@@ -80,8 +92,8 @@
                   >
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="modalTitleId">
-                          Cancella la foto
+                        <h5 class="modal-title" id="modalTitle{{$photo->id}}">
+                          Delete photo
                         </h5>
                         <button
                           type="button"
@@ -90,7 +102,7 @@
                           aria-label="Close"
                         ></button>
                       </div>
-                      <div class="modal-body">Confermi di voler cancellare la foto?</div>
+                      <div class="modal-body">You are about to destroy this photo</div>
                       <div class="modal-footer">
                         <button
                           type="button"
