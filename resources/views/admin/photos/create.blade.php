@@ -2,10 +2,11 @@
 
 @section('content')
 <div class="container mt-5">
+
     @include('partials.errors')
     
         <h2 class="mb-4">Creazione Nuovo Record Photo</h2>
-        <form method="post" action="{{route('admin.photos.store')}}">
+        <form method="post" action="{{route('admin.photos.store')}}" enctype="multipart/form-data">
         @csrf
             <div class="form-group mb-3">
                 <label for="title" class="form-label">Titolo</label>
@@ -28,7 +29,7 @@
                     id="category_id"
                 
                 >
-                    <option selected disabled>Select one</option>
+                    <option selected>Select one</option>
                     @foreach($categories as $category)
                     <option value="{{$category->id}}" {{ old("category_id") == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
                     @endforeach

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('photos', function (Blueprint $table) {
-            $table->boolean('featured')->default(false)->after('category_id');
+            $table->boolean('featured')->default(false)->after('image_path');
         });
     }
 

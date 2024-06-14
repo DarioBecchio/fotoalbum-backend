@@ -25,6 +25,7 @@ class UpdatePhotoRequest extends FormRequest
             'title'=> 'required',
             'description'=>'nullable',
             'image_path'=>'required',
+            'featured'=>'boolean',
         ];
     }
 }

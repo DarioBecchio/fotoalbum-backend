@@ -43,7 +43,8 @@ class PhotoController extends Controller
         $val_data = $request->validated();
         $img_path = Storage::put('uploads', $request->image_path);
         //dd($img_path);
-    
+        $val_data['image_path'] = $img_path;
+        //dd($val_data);
         
         Photo::create($val_data);
         

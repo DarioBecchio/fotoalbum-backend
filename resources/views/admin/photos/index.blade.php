@@ -24,9 +24,11 @@
           <thead>
             <tr>
               <th>ID</th>
-              <th>Titolo</th>
-              <th>Descrizione</th>
-              <th>Foto</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Photo</th>
+              <th>Category</th>
+              <th>In evidenza</th>
               <th>Azioni</th>
             </tr>
           </thead>
@@ -37,7 +39,9 @@
               <td>{{$photo->id}}</td>
               <td>{{$photo->title}}</td>
               <td>{{$photo->description}}</td>
-              <td>{{$photo->image_path}}</td>
+              <td><img width="140" src="{{ asset('storage/' . $photo->image_path) }}" alt=""></td>
+              <td>{{$photo->category?->name}}</td>
+              <td>{{$photo->featured}}</td>
               <td>
                 <a href="{{route('admin.photos.show', $photo)}}" class="btn btn-primary btn-sm">Visualizza</a>
                 <a href="{{route('admin.photos.edit', $photo)}}" class="btn btn-warning btn-sm">Modifica</a>
