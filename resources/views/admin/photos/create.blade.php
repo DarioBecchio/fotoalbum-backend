@@ -26,7 +26,6 @@
                     class="form-select form-select-lg"
                     name="category_id"
                     id="category_id"
-                    value=
                 
                 >
                     <option selected disabled>Select one</option>

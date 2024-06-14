@@ -18,6 +18,7 @@
             <label for="image_path" class="form-label">Upload cover image</label>
             <input type="file" class="form-control" name="image_path" id="image_path" placeholder="image_path" aria-describedby="imagePathHelper" value="{{old('image_path')}}"/>
             <div id="image_path" class="form-text">Upload a cover image for this post</div>
+            
             <div class="mb-3">
                 <label for="category_id" class="form-label">Photo Category</label>
                 <select
@@ -27,10 +28,12 @@
                     value=
                 
                 >
-                    
+                    <option selected disabled>Select one</option>
                     @foreach($categories as $category)
                     
-                    @if ($category->id == $photo->category->id)
+                    @if ($category->id == null)
+                    
+                    @elseif(isset($photo->category) && $category->id == $photo->category->id)
                     <option value="{{$category->id}}" selected>{{$category->name}}</option>
                     @else
                     <option value="{{$category->id}}" {{ old("category_id", $category) == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
@@ -42,4 +45,5 @@
             <button type="submit" class="btn btn-primary">Modifica</button>
         </form>
 </div>
+
 @endsection
