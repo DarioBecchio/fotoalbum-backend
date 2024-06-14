@@ -12,6 +12,6 @@ class Category extends Model
 
     public function photos(): HasMany
     {
-        return $this->hasMany(Photo::class, 'fereign_key', 'local_key');
+        return $this->hasMany(Photo::class);
     }
 }

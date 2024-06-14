@@ -12,6 +12,10 @@
                     <img src="{{ asset('storage/' . $photo->image_path) }}" class="img-fluid mb-3" alt="{{ $photo->title }}">
                     <p>{{ $photo->description }}</p>
                 </div>
+                <div>
+                    <strong>Category: </strong>
+                    <p class="my-4">{{$photo->category}}</p>
+                </div>
             </div>
         </div>
     </div>

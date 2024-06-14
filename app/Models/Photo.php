@@ -11,9 +11,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Photo extends Model
 {
     use HasFactory;
+
     protected $fillable = ['title','description','image_path'];
 
-    public function type (): BelongsTo
+    
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
