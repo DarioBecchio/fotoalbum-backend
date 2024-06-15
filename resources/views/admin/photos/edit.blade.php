@@ -56,6 +56,11 @@
                 </select>
             </div>
 
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="featured" name="featured" {{ old('featured') ? 'checked' : '' }}>
+                <label class="form-check-label" for="featured">Featured</label>
+            </div>
+            
             <button type="submit" class="btn btn-primary">Modifica</button>
         </form>
 </div>

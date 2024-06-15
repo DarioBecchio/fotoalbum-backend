@@ -39,11 +39,11 @@
             </div>
 
             <div class="form-check mb-3">
-                <input type="checkbox" class="form-check-input" id="featured" name="featured" {{ old('featured') ? 'checked' : '' }}>
+                <input type="checkbox" class="form-check-input" id="featured" value="1" name="featured" {{ old('featured') ? 'checked="checked"' : ''  }}>
                 <label class="form-check-label" for="featured">Featured</label>
             </div>
-            
         <button type="submit" class="btn btn-primary">Salva</button>
+        @dd('featured')
         </form>
 </div>
 @endsection
