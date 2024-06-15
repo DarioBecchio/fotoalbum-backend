@@ -41,10 +41,14 @@ class PhotoController extends Controller
         //dd($request->all());
         
         $val_data = $request->validated();
+       
         $img_path = Storage::put('uploads', $request->image_path);
         //dd($img_path);
+        
         $val_data['image_path'] = $img_path;
         //dd($val_data);
+        
+        $val_data['featured'] = $request->has('featured');
         
         Photo::create($val_data);
         
@@ -87,10 +91,16 @@ class PhotoController extends Controller
             }
             $img_path = Storage::put('uploads', $request->image_path);
             //dd($img_path);
+
             $val_data['image_path'] = $img_path;
+
+            
         }
 
+        $val_data['featured'] = $request->has('featured') ? true : false;
+
         $photo->update($val_data);
+
 
         return to_route('admin.photos.index')->with('success', 'Foto aggiornata con successo');
     }

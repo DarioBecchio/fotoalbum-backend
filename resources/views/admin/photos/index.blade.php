@@ -51,7 +51,9 @@
                 </td>
               <td>{{$photo->category?->name}}</td>
               <td>
-              
+              @if ($photo->featured)
+                  <i class="fas fa-star text-warning"></i>
+              @endif
               </td>
               <td>
       

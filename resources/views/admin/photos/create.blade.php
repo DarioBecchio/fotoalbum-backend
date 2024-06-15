@@ -5,7 +5,7 @@
 <div class="container mt-5">
 
     @include('partials.errors')
-    @include('partials.successs')
+    @include('partials.success')
     
         <h2 class="mb-4">Creazione Nuovo Record Photo</h2>
         <form method="post" action="{{route('admin.photos.store')}}" enctype="multipart/form-data">
@@ -16,7 +16,7 @@
             </div>
             <div class="form-group mb-3">
                 <label for="description">Descrizione</label>
-                <textarea class="form-control" id="description" name="description" rows="3" placeholder="Inserisci la descrizione" value="{{old('description')}}"></textarea>
+                <textarea class="form-control" id="description" name="description" rows="3" placeholder="Inserisci la descrizione" value="{{old('description')}}">{{old('description')}}</textarea>
             </div>
             <div class="form-group mb-3">
             <label for="image_path" class="form-label">Upload cover image</label>
@@ -36,6 +36,11 @@
                     <option value="{{$category->id}}" {{ old("category_id") == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
                     @endforeach
                 </select>
+            </div>
+
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="featured" name="featured" {{ old('featured') ? 'checked' : '' }}>
+                <label class="form-check-label" for="featured">Featured</label>
             </div>
             
         <button type="submit" class="btn btn-primary">Salva</button>

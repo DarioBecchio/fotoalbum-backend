@@ -12,7 +12,7 @@ class Photo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','description','image_path','category_id','featured'];
+    protected $fillable = ['title', 'description','image_path', 'category_id','featured'];
 
     
     public function category(): BelongsTo

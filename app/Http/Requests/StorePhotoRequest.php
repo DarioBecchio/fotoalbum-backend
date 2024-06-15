@@ -23,9 +23,9 @@ class StorePhotoRequest extends FormRequest
     {
         return [
             'title'=> 'required',
+            'category_id' =>'nullable|exists:categories,id',
             'description'=>'nullable',
-            'image_path'=>'required',
-            'category' =>'nullable|exists:categories,id',
+            'image_path'=>'required',            
             'featured' => 'boolean'       
         ];
     }

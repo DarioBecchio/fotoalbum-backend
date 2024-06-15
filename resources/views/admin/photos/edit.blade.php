@@ -5,8 +5,8 @@
 <div class="container mt-5">
 
     @include('partials.errors')
-    @include('partials.successs')
-    
+    @include('partials.success')
+
         <h2 class="mb-4">Modifica {{$photo->title}}</h2>
         <form method="post" action="{{route('admin.photos.update', $photo)}}"  enctype="multipart/form-data">
         @csrf

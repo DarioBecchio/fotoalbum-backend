@@ -23,9 +23,9 @@ class UpdatePhotoRequest extends FormRequest
     {
         return [
             'title'=> 'required',
+            'category_id'=>'nullable|exists:categories,id',
             'description'=>'nullable',
-            'image_path'=>'nullable',
-            'category'=>'nullable',
+            'image_path'=>'nullable',           
             'featured'=>'boolean',
         ];
     }
