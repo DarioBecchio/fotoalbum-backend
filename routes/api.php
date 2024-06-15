@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\PhotoController;
 use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,27 +26,5 @@ use Illuminate\Support\Facades\Route;
     return Photo::all();
 });*/
 
-Route::get('photos', function(){
-    return response()->json([
-        'success' => true,
-        'results' => Photo::with(['category'])->paginate(),
-    ]);
-});
-
-Route::get('photos/{photo}',function ($id){
-    
-    $photo = Photo::with(['category'])->where('id' , $id)->first();
-    
-
-    if ($photo) {
-        return response()->json([
-            'success'=>true,
-            'results'=>$photo
-        ]);
-    } else {
-        return response()->json([
-            'success'=>false,
-            'results'=>'404 not found'
-        ]);
-    }
-});
+Route::get('photos',[PhotoController::class , 'index']);
+Route::get('photos/{photo}',[PhotoController::class , 'show']);
