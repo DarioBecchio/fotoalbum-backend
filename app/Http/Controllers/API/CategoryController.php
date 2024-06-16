@@ -3,36 +3,24 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Photo;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
 class PhotoController extends Controller
 {
     public function index(Request $request){
-        if($request->has('search')){
-            //dd($request->search);
-            return response()->json([
-                'success' => true,
-                'results' => Photo::with(['category'])->where('title', 'LIKE', '%' . $request->search . '%')->paginate(),
-            ]);
-        }
-
-
+        
         if ($request->has('category')) {
             return response()->json([
             'success' => true,
-            'results' => Photo::where('category_id', $request->category)->paginate()
+            'results' => Category::where('category_id', $request->category)->paginate()
         ]);
         }
-        
-        
-        
-        
-        
+                       
         return response()->json([
             'success' => true,
-            'results' => Photo::with(['category'])->paginate(),
+            'results' => Category::with(['category'])->paginate(),
         ]);
     }
 
@@ -40,7 +28,7 @@ class PhotoController extends Controller
 
         
     
-            $photo = Photo::with(['category'])->where('id' , $id)->first();
+            $photo = Category::with(['category'])->where('id' , $id)->first();
             
         
             if ($photo) {
