@@ -22,7 +22,7 @@ class PhotoController extends Controller
         if ($request->has('category')) {
             return response()->json([
             'success' => true,
-            'results' => Photo::where('category_id', $request->category)->paginate()
+            'results' => Photo::where('category_id','LIKE', '%' . $request->category . '%')->paginate()
         ]);
         }
         
@@ -57,4 +57,5 @@ class PhotoController extends Controller
         
 
     }
+    
 }

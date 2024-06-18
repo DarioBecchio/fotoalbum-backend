@@ -48,8 +48,7 @@ class PhotoController extends Controller
         $val_data['image_path'] = $img_path;
         //dd($val_data);
         
-        //$val_data['featured'] = $request->has('featured');
-        $val_data->featured = $request->input('featured') ? true : false;
+        
         Photo::create($val_data);
         
         return to_route('admin.photos.index')->with('success', 'Foto creata con successo');
@@ -97,8 +96,6 @@ class PhotoController extends Controller
             
         }
 
-        //$val_data['featured'] = $request->has('featured');
-        $photo->featured = $request->input('featured') ? true : false;
 
         $photo->update($val_data);
 

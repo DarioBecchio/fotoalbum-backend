@@ -7,7 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
-class PhotoController extends Controller
+class CategoryController extends Controller
 {
     public function index(Request $request){
         
@@ -20,7 +20,7 @@ class PhotoController extends Controller
                        
         return response()->json([
             'success' => true,
-            'results' => Category::with(['category'])->paginate(),
+            'results' => Category::all(),
         ]);
     }
 
