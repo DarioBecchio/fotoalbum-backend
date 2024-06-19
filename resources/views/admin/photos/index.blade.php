@@ -51,13 +51,15 @@
                 </td>
               <td>{{$photo->category?->name}}</td>
               <td>
-              @if ($photo->is_featured)
-                
-                <i class="fa fa-star text-warning"></i>
-              @endif
+                @if ($photo->featured_id == 1)
+                  <i class="fa fa-star text-warning"></i>
+                @elseif ($photo->featured_id == 2)
+                <i class="fa-regular fa-star"></i>
+                @else
+                @endif
               </td>
               <td>
-      
+              
                 <a href="{{route('admin.photos.show', $photo)}}" class="btn btn-primary btn-sm">
                 <i class="fas fa-eye fa-xs fa-fw">
                   Show
@@ -143,5 +145,5 @@
       </div>
     </div>
   </div>
-  {{ $photos->links() }}
+  {{$photos->links('pagination::bootstrap-5')}}
 @endsection

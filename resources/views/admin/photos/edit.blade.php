@@ -66,17 +66,11 @@
                 >
                     <option selected>Select one</option>
                     @foreach($featureds as $featured)
-
-                    @if ($featured->id == null)
-
-                    @elseif(isset($photo->category) && $featured->id == $photo->featured->id)
-
-                    <option value="{{$featured->id}}" selected>{{$featured->option}}</option>
-                       
+                    @if ($featured->id && $photo->featured && $featured->id == $photo->featured->id)
+                        <option value="{{ $featured->id }}" selected>{{ $featured->option }}</option>
                     @else
-                    <option value="{{$featured->id}}" {{ old("featured_id") == $featured->id ? 'selected' : '' }}>{{$featured->option}}</option>
+                        <option value="{{ $featured->id }}" {{ old("featured_id") == $featured->id ? 'selected' : '' }}>{{ $featured->option }}</option>
                     @endif
-                    
                     @endforeach
                 </select>
             </div>
