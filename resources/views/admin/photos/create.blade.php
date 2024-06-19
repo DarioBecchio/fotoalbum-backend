@@ -39,11 +39,21 @@
             </div>
 
             <div class="form-check mb-3">
-                <input type="checkbox" class="form-check-input" id="featured" value="1" name="featured" {{ old('featured') ? 'checked="checked"' : ''  }}>
-                <label class="form-check-label" for="featured">Featured</label>
+            <label for="featured_id" class="form-label">State</label>
+                <select
+                    class="form-select form-select-lg"
+                    name="featured_id"
+                    id="featured_id"
+                
+                >
+                    <option selected>Select one</option>
+                    @foreach($featureds as $featured)
+                    <option value="{{$featured->id}}" {{ old("featured_id") == $featured->id ? 'selected' : '' }}>{{$featured->option}}</option>
+                    @endforeach
+                </select>
             </div>
+
         <button type="submit" class="btn btn-primary">Salva</button>
-        @dd('featured')
         </form>
 </div>
 @endsection

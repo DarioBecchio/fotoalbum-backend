@@ -7,7 +7,9 @@ use App\Http\Requests\StorePhotoRequest;
 use App\Http\Requests\UpdatePhotoRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Featured;
 use Illuminate\Support\Facades\Storage;
+
 
 
 
@@ -30,7 +32,8 @@ class PhotoController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view ('admin.photos.create', compact('categories'));
+        $featureds = Featured::all();
+        return view ('admin.photos.create', compact('categories' , 'featureds'));
     }
 
     /**
@@ -38,7 +41,7 @@ class PhotoController extends Controller
      */
     public function store(StorePhotoRequest $request)
     {
-        dd($request->all());
+        //dd($request->all());
         
         $val_data = $request->validated();
        
@@ -70,7 +73,8 @@ class PhotoController extends Controller
     public function edit(Photo $photo)
     {
         $categories = Category::all();
-        return view('admin.photos.edit', compact('photo', 'categories'));
+        $featureds = Featured::all();
+        return view('admin.photos.edit', compact('photo', 'categories','featureds'));
     }
 
     /**

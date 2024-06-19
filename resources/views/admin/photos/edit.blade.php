@@ -57,8 +57,28 @@
             </div>
 
             <div class="form-check mb-3">
-                <input type="checkbox" class="form-check-input" id="featured" name="featured" {{ old('featured') ? 'checked' : '' }}>
-                <label class="form-check-label" for="featured">Featured</label>
+            <label for="featured_id" class="form-label">State</label>
+                <select
+                    class="form-select form-select-lg"
+                    name="featured_id"
+                    id="featured_id"
+                
+                >
+                    <option selected>Select one</option>
+                    @foreach($featureds as $featured)
+
+                    @if ($featured->id == null)
+
+                    @elseif(isset($photo->category) && $featured->id == $photo->featured->id)
+
+                    <option value="{{$featured->id}}" selected>{{$featured->option}}</option>
+                       
+                    @else
+                    <option value="{{$featured->id}}" {{ old("featured_id") == $featured->id ? 'selected' : '' }}>{{$featured->option}}</option>
+                    @endif
+                    
+                    @endforeach
+                </select>
             </div>
             
             <button type="submit" class="btn btn-primary">Modifica</button>

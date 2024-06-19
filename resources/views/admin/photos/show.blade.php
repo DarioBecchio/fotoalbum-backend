@@ -17,6 +17,11 @@
                         <strong>Category: </strong>
                         <p class="my-4">{{ $photo->category?->name }}</p>
                     </div>
+                    <div>
+                        @if ($photo->featured?->option)                
+                        <i class="fa fa-star text-warning"></i>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
