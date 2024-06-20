@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\API\FeaturedController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\PhotoController;
 use App\Models\Category;
+use App\Models\Featured;
 use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -34,3 +37,7 @@ Route::get('photos/{photo}',[PhotoController::class , 'show']);
 
 Route::get('categories',[CategoryController::class , 'index']);
 Route::get('categories/{category}',[CategoryController::class , 'show']);
+
+Route::get('featureds',[FeaturedController::class , 'index']);
+Route::get('featureds/{featured}',[FeaturedController::class , 'show']);
+

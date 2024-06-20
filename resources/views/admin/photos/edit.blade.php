@@ -22,7 +22,7 @@
                 <textarea class="form-control" id="description" name="description" rows="3" placeholder="Inserisci la descrizione" value="{{old('description',$photo->description)}}"></textarea>
             </div>
 
-            <div class="d-flex gap-3">
+            <div class="d-flex gap-3 mb-3">
                 <img width="140" src="{{ asset('storage/' . $photo->image_path) }}" alt="">
                 <div class="mb-3">
                     <label for="image_path" class="form-label">Upload cover image</label>
@@ -56,7 +56,7 @@
                 </select>
             </div>
 
-            <div class="form-check mb-3">
+            <div class="mb-3">
             <label for="featured_id" class="form-label">State</label>
                 <select
                     class="form-select form-select-lg"
@@ -67,14 +67,14 @@
                     <option selected>Select one</option>
                     @foreach($featureds as $featured)
                     @if ($featured->id && $photo->featured && $featured->id == $photo->featured->id)
-                        <option value="{{ $featured->id }}" selected>{{ $featured->option }}</option>
+                        <option value="{{$featured->id}}" selected>{{ $featured->option }}</option>
                     @else
                         <option value="{{ $featured->id }}" {{ old("featured_id") == $featured->id ? 'selected' : '' }}>{{ $featured->option }}</option>
                     @endif
                     @endforeach
                 </select>
             </div>
-            
+            <a class="btn btn-secondary" href="{{route('admin.photos.index')}}"><i class="fas fa-times fa-sm fa-fw"></i> Cancel</a>
             <button type="submit" class="btn btn-primary">Modifica</button>
         </form>
 </div>

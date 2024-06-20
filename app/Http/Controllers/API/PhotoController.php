@@ -14,7 +14,7 @@ class PhotoController extends Controller
             //dd($request->search);
             return response()->json([
                 'success' => true,
-                'results' => Photo::with(['category'])->where('title', 'LIKE', '%' . $request->search . '%')->paginate(),
+                'results' => Photo::with(['category' , 'featured'])->where('title', 'LIKE', '%' . $request->search . '%')->paginate(),
             ]);
         }
 
@@ -23,16 +23,22 @@ class PhotoController extends Controller
             return response()->json([
             'success' => true,
             'results' => Photo::where('category_id','LIKE', '%' . $request->category . '%')->paginate()
-        ]);
+            ]);
         }
         
+        if ($request->has('featured')) {
+            return response()->json([
+            'success' => true,
+            'results' => Photo::where('featured_id','LIKE', '%' . $request->featured . '%')->paginate()
+            ]);
+        }
         
         
         
         
         return response()->json([
             'success' => true,
-            'results' => Photo::with(['category'])->paginate(),
+            'results' => Photo::with(['category','featured'])->paginate(),
         ]);
     }
 
@@ -40,7 +46,7 @@ class PhotoController extends Controller
 
         
     
-            $photo = Photo::with(['category'])->where('id' , $id)->first();
+            $photo = Photo::with(['category','featured'])->where('id' , $id)->first();
             
         
             if ($photo) {

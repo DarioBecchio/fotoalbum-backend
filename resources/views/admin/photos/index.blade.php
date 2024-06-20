@@ -1,20 +1,22 @@
 @extends('layouts.admin')
 
 @section('content')
-   
+<div class="container mt-4">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Dashboard Fotografo</a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="{{route('admin.photos.index', $photos)}}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{route('admin.photos.create', $photos)}}">Aggiungi Foto</a>
-        </li>
-      </ul>
-    </div>
+      <a class="navbar-brand" href="#">Dashboard Fotografo</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="{{route('admin.photos.index', $photos)}}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('admin.photos.create', $photos)}}">Aggiungi Foto</a>
+          </li>
+        </ul>
+      </div>
   </nav>
+</div> 
+  
 
     @include('partials.errors')
     @include('partials.success')
@@ -44,9 +46,9 @@
               <td>{{$photo->description}}</td>
               <td>
               @if (Str::startsWith($photo->cover_image, 'https://'))
-                <img width="140" src="{{ $photo->image_path }}" alt="">
+                <img width="140" height ="100%" src="{{ $photo->image_path }}" alt="">
               @else
-                <img width="140" src="{{ asset('storage/' . $photo->image_path) }}" alt="">
+                <img width="140" height ="100%" src="{{ asset('storage/' . $photo->image_path) }}" alt="">
               @endif
                 </td>
               <td>{{$photo->category?->name}}</td>
@@ -54,28 +56,28 @@
                 @if ($photo->featured_id == 1)
                   <i class="fa fa-star text-warning"></i>
                 @elseif ($photo->featured_id == 2)
-                <i class="fa-regular fa-star"></i>
+                  <i class="far fa-circle"></i>
                 @else
                 @endif
               </td>
               <td>
               
-                <a href="{{route('admin.photos.show', $photo)}}" class="btn btn-primary btn-sm">
-                <i class="fas fa-eye fa-xs fa-fw">
+                <a href="{{route('admin.photos.show', $photo)}}" class="btn btn-primary btn-sm mb-1">
+                <i class="fas fa-eye"></i>
                   Show
                 </a>
-                <a href="{{route('admin.photos.edit', $photo)}}" class="btn btn-secondary btn-sm">
-                <i class="fas fa-pencil fa-xs fa-fw"></i>
+                <a href="{{route('admin.photos.edit', $photo)}}" class="btn btn-secondary btn-sm mb-1">
+                <i class="fas fa-pencil-alt"></i></i>
                   Edit
                 </a>
                 <!-- Modal trigger button -->
                 <button
                   type="button"
-                  class="btn btn-danger btn-small"
+                  class="btn btn-danger btn-small mb-1"
                   data-bs-toggle="modal"
                   data-bs-target="#modalId-{{$photo->id}}"
                 >
-                  <i class="fas fa-trash fa-xs fa-fw"></i>
+                <i class="fas fa-trash"></i>
                   Delete
                 </button>
                 

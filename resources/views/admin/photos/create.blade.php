@@ -52,7 +52,7 @@
                     @endforeach
                 </select>
             </div>
-
+        <a class="btn btn-secondary" href="{{route('admin.photos.index')}}"><i class="fas fa-times fa-sm fa-fw"></i> Cancel</a>
         <button type="submit" class="btn btn-primary">Salva</button>
         </form>
 </div>
